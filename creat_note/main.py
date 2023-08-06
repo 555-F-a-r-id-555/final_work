@@ -72,7 +72,6 @@ def get_info_from_user():
             note_name = input("\033[34mВведите название файла:")
             note_row_number = input("\033[34mВведите номер строки:")
             print(read_file.get_current_note(note_name, note_row_number))
-
         case "Sorted_time":  # сортирует по времени + дате
             note_name = input("\033[34mВведите название файла:")
             sorted_by_data_time.sort_by_datetime(note_name)
