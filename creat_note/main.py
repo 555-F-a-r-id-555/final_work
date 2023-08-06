@@ -6,6 +6,7 @@ import delete_all
 import sorted_by_data_time
 import read_file
 import get_file_list
+import path_to_file
 
 
 # Реализовать консольное приложение заметки, с сохранением, чтением,
@@ -20,9 +21,10 @@ import get_file_list
 
 # Критерии оценки
 # Приложение должно запускаться без ошибок, должно уметь сохранять данные
-# в файл, уметь читать данные из файла, делать выборку по дате, выводить на
-# экран выбранную запись, выводить на экран весь список записок, добавлять
-# записку, редактировать ее и удалять.
+# в файл (Create), уметь читать данные из файла(Show), делать выборку по дате(Sorted_time),
+# выводить на экран выбранную запись(Show_1),
+# выводить на экран весь список записок (Show) or (GetList),
+# добавлять записку(Add), редактировать(Change) ее и удалять(Delete) or (Delete_all).
 
 def get_info_from_user():
     print("\033[32mВведите команду:")
@@ -66,6 +68,11 @@ def get_info_from_user():
         case "Show":  # выводит список заметок
             note_name = input("\033[34mВведите название заметки:")
             read_file.show_all(note_name)
+        case "Show_1": # выводит запись с определенным номером строки
+            note_name = input("\033[34mВведите название файла:")
+            note_row_number = input("\033[34mВведите номер строки:")
+            print(read_file.get_current_note(note_name, note_row_number))
+
         case "Sorted_time":  # сортирует по времени + дате
             note_name = input("\033[34mВведите название файла:")
             sorted_by_data_time.sort_by_datetime(note_name)
@@ -78,7 +85,7 @@ def get_info_from_user():
             sorted_by_data_time.sort_csv(note_name)
             num = read_file.get_note_number(file_name=note_name)
             read_file.get_current_note(file_name=note_name, current_num=num)
-        case "GetList": # выводит список файлов в каталоге, папке, директории
+        case "GetList":  # выводит список файлов в каталоге, папке, директории
             get_file_list.get_file_list()
 
 
