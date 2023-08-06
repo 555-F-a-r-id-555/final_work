@@ -40,5 +40,5 @@ def sort_csv(file_name):
         print(f"\033[31m {ex}")
 
 
-file_name = "note2"
-sort_csv(file_name)
+# file_name = "note2"
+# sort_csv(file_name)
