@@ -44,7 +44,7 @@ def get_info_from_user():
         case "Show":
             note_name = input("\033[34mВведите название заметки:")
             read_file.show_all(note_name)
-        case "Sorted":
+        case "Sorted_time":
             note_name = input("\033[34mВведите название файла:")
             sorted_by_data_time.sort_by_datetime(note_name)
             num = read_file.get_note_number(file_name=note_name)

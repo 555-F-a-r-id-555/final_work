@@ -27,17 +27,21 @@ def get_time():
     return list1
 
 
+def open_csv_file(file_name, mode):
+    path_to_note = get_path_to_file(directory_name, file_name)
+    return open(path_to_note, mode, encoding="utf-8", newline="")
+
+
 def change_or_delete(file_name, row_number, data):
     try:
-        path_to_note = get_path_to_file(directory_name, file_name)
-        with open(path_to_note, "r", encoding="utf-8", newline="") as file:
+        with open_csv_file(file_name, "r") as file:
             reader = csv.reader(file, delimiter="/")
             rows = list(reader)
 
         if 1 < int(row_number) <= len(rows):
             rows[int(row_number) - 1] = data
 
-            with open(path_to_note, "w", encoding="utf-8", newline="") as file:
+            with open_csv_file(file_name, "w") as file:
                 writer = csv.writer(file, delimiter="/")
                 writer.writerows(rows)
             if data == ():

@@ -14,7 +14,7 @@ def add_note(file_name, add_note):
             "Тело Заметки": add_note}
 
     if path_to_file.check_file(path_to_note):
-        with open(path_to_note, "a", encoding="utf-8", newline="") as file:
+        with path_to_file.open_csv_file(file_name, "a") as file:
             column = ["Номер Заметки", "Дата", "Время", "Тело Заметки"]
             note_writer = csv.DictWriter(file, fieldnames=column, delimiter="/")
             note_writer.writerow(data)
